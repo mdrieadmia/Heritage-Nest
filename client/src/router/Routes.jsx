@@ -4,6 +4,7 @@ import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import Home from "../pages/Home/Home";
 import About from "../pages/About/About";
 import Buy from "../pages/Buy/Buy";
+import PropertyDetails from "../pages/PropertyDetails/PropertyDetails";
 
 const Routes = createBrowserRouter([
     {
@@ -22,6 +23,10 @@ const Routes = createBrowserRouter([
             {
                 path:'/buy',
                 element : <Buy/>
+            },
+            {
+                path:'/details',
+                element : <PropertyDetails/>
             }
         ]
     }
