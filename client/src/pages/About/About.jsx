@@ -44,9 +44,11 @@ const About = () => {
                         </div>
                     </div>
                 </div>
-                <OurTeam/>
-                <Consultation/>
-                <Testimonials/>
+                <OurTeam />
+                <Consultation />
+                <div className='mb-10'>
+                    <Testimonials />
+                </div>
             </div>
         </div>
     );

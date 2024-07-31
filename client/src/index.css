@@ -29,6 +29,29 @@ body {
     max-width: 100%;
 }
 
-.search-form{
+.search-form {
     box-shadow: 4px 4px 50px rgba(0, 0, 0, 0.15);
+}
+
+.swiper-pagination-bullet-active {
+    width: 30px !important;
+    height: 10px !important;
+    background-color: orangered !important;
+    border-radius: 10px !important;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    height: 50px !important;
+    width: 50px !important;
+    color: white !important;
+    padding: 15px 15px !important;
+    border-radius: 50px;
+    background-color: #5490CB;
+}
+
+
+.swiper-button-prev:after,
+.swiper-button-next:after {
+    font-size: 16px !important;
 }

@@ -5,6 +5,9 @@ import { IoSearch } from "react-icons/io5";
 import { RiHome8Line } from "react-icons/ri";
 import { AiOutlineDollar } from "react-icons/ai";
 import Counter from "../../components/Counter/Counter";
+import PopularProperties from "../../components/PopularProperties/PopularProperties";
+import NewListed from "../../components/NewListed/NewListed";
+import Testimonials from "../../components/Testimonials/Testimonials";
 
 const Buy = () => {
     const [category, setCategory] = useState('buy')
@@ -77,12 +80,12 @@ const Buy = () => {
                                         <AiOutlineDollar className="text-xl mb-[2px] text-[#ee6611]" />
                                         <p className="font-inter text-lg font-semibold text-[#181818]">Budget</p>
                                     </div>
-                                    <input className="p-3 block w-full bg-blue-50 rounded-md mt-3" type="number" name="budget"{...register("budget")}/>
+                                    <input className="p-3 block w-full bg-blue-50 rounded-md mt-3" type="number" name="budget"{...register("budget")} />
                                     {errors.budget && <span>This field is required</span>}
                                 </div>
                             </div>
                             <div>
-                                <button type="submit" className="w-full py-2 flex justify-center mt-8 rounded-md items-center gap-1 text-white font-poppins bg-[#0059b1] hover:bg-blue-400 duration-200"><IoSearch className="text-xl"/> Find Property</button>
+                                <button type="submit" className="w-full py-2 flex justify-center mt-8 rounded-md items-center gap-1 text-white font-poppins bg-[#0059b1] hover:bg-blue-400 duration-200"><IoSearch className="text-xl" /> Find Property</button>
                             </div>
                         </form>
                     </div>
@@ -90,8 +93,28 @@ const Buy = () => {
                 <div>
 
                 </div>
+                <div className="px-5">
+                    <Counter />
+                </div>
                 <div>
-                    <Counter/>
+                    <PopularProperties />
+                </div>
+                <div>
+                    <NewListed />
+                </div>
+                <div className="mt-10">
+                    <Testimonials />
+                </div>
+            </div>
+            <div className='w-full bg-[#FDF0E7] py-12'>
+                <div className='container mx-auto px-5 flex justify-between flex-wrap gap-5'>
+                    <div>
+                        <h4 className='text-xl font-semibold text-[#101828]'>Post your property for free</h4>
+                        <p className='text-[#475467] font-poppins pt-2'>List it on your property and get genuine leads</p>
+                    </div>
+                    <div>
+                        <button className='bg-[#F06224] px-[28px] py-[14px] font-inter text-lg text-white flex hover:bg-red-700 duration-200 justify-center items-center rounded-lg'>Post Property</button>
+                    </div>
                 </div>
             </div>
         </div>
