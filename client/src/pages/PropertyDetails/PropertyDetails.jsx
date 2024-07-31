@@ -1,4 +1,5 @@
 import { GrLocation } from "react-icons/gr";
+import Overview from "../../components/Overview/Overview";
 
 const PropertyDetails = () => {
     return (
@@ -33,6 +34,9 @@ const PropertyDetails = () => {
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div>
+                            <Overview/>
                         </div>
                     </div>
 
