@@ -7,6 +7,7 @@ import Buy from "../pages/Buy/Buy";
 import PropertyDetails from "../pages/PropertyDetails/PropertyDetails";
 import Signin from "../pages/Signin/Signin";
 import Signup from "../pages/SignUp/Signup";
+import ManageRentals from "../pages/ManageRentals/ManageRentals";
 
 const Routes = createBrowserRouter([
     {
@@ -37,6 +38,10 @@ const Routes = createBrowserRouter([
             {
                 path:'/register',
                 element : <Signup />
+            },
+            {
+                path:'/manage',
+                element : <ManageRentals />
             }
         ]
     }

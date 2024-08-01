@@ -12,7 +12,6 @@ const Signup = () => {
 
     const handleEmailRegister = (data) => {
         const { name, photo, email, password } = data;
-        console.log(email, password);
 
         handleRegister(email, password)
             .then((res) => {

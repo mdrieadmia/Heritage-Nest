@@ -19,7 +19,6 @@ const Menubar = () => {
         );
     }, []);
 
-    console.log(userData);
     const navList = (
         <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
             <Typography
@@ -67,18 +66,6 @@ const Menubar = () => {
                 <NavLink to={'/'}>
                     <p className="flex items-center text-black text-lg mt-2 font-inter hover:text-blue-500 duration-200 cursor-pointer border-b-2 border-transparent hover:border-blue-500 pb-1">
                         Sell
-                    </p>
-                </NavLink>
-            </Typography>
-            <Typography
-                as="li"
-                variant="small"
-                color="blue-gray"
-                className="p-1 font-normal"
-            >
-                <NavLink to={'/'}>
-                    <p className="flex items-center text-black text-lg mt-2 font-inter hover:text-blue-500 duration-200 cursor-pointer border-b-2 border-transparent hover:border-blue-500 pb-1">
-                        Services
                     </p>
                 </NavLink>
             </Typography>
@@ -154,10 +141,17 @@ const Menubar = () => {
                                 </IconButton>
                             </div>
                             <div className="items-center gap-x-1 hidden lg:flex">
+                                <NavLink to={'/manage'}>
+                                    <p className="flex mr-5 items-center text-black text-lg mt-2 font-inter hover:text-blue-500 duration-200 cursor-pointer border-b-2 border-transparent hover:border-blue-500 pb-1">
+                                        Manage Bids
+                                    </p>
+                                </NavLink>
                                 {
                                     user ?
                                         <div className="flex justify-center items-center gap-3">
-                                            <img className="h-10 w-10 rounded-full p-1 border-2 object-cover border-blue-300" src={userData !== null ? userData.photoURL : 'https://static.vecteezy.com/system/resources/thumbnails/008/442/086/small_2x/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg'} alt="User" />
+                                            <img className="h-10 w-10 rounded-full p-1 border-2 object-cover border-blue-300"
+                                                src={typeof (userData.displayName) == "string" ? userData.photoURL : `https://static.vecteezy.com/system/resources/thumbnails/008/442/086/small_2x/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg`}
+                                                alt="User" />
                                             <button
                                                 className="lg:inline-block hidden text-[#0059B1] px-[25px] rounded-[8px] py-[10px] bg-[#C5E2FF]"
                                                 onClick={() => handleLogOut()}
@@ -179,6 +173,11 @@ const Menubar = () => {
                         <MobileNav className="-mt-3" open={openNav}>
                             <div className="bg-[#ECF5FF] z-[100] w-full px-5">
                                 {navList}
+                                <NavLink to={'/manage'}>
+                                    <p className="flex items-center text-black text-lg mt-2 font-inter hover:text-blue-500 duration-200 cursor-pointer border-b-2 border-transparent hover:border-blue-500 pb-1">
+                                        Manage Bids
+                                    </p>
+                                </NavLink>
                                 {
                                     !loading && user ?
                                         <div className="flex gap-5 flex-col mb-5">

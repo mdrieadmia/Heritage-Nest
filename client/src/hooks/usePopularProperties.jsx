@@ -6,8 +6,9 @@ const usePopularProperties = () => {
     const {data:popularProperties = [], isLoading} =  useQuery({
         queryKey:['popular'],
         queryFn : async ()=>{
-            const {data} = await axios.get('http://localhost:5000/popular')
-            return data;
+            const { data } = await axios.get('http://localhost:5000/properties')
+            const newData = data.filter(item => item.category === 'popular')
+            return newData;
         }
     })
 

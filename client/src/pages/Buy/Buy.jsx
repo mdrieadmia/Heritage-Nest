@@ -13,10 +13,6 @@ const Buy = () => {
     const [category, setCategory] = useState('buy')
     const { register, handleSubmit, formState: { errors } } = useForm()
 
-    const handleSearch = (data) => {
-        console.log(data);
-    }
-
     return (
         <div>
             <div className="w-full h-[309px] bg-[url('/buy.jpeg')] bg-cover bg-center bg-no-repeat">

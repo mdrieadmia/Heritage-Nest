@@ -3,11 +3,13 @@ import axios from "axios";
 
 const useNearbyProperties = () => {
     const { data: nearbyProperties = [], isLoading } = useQuery({
-        queryKey: ['popular'],
+        queryKey: ['nearby'],
         queryFn: async () => {
-            const { data } = await axios.get('http://localhost:5000/newlisted')
-            return data;
+            const { data } = await axios.get('http://localhost:5000/properties')
+            const newData = data.filter(item => item.category === 'nearby')
+            return newData;
         }
+
     })
 
     return [nearbyProperties, isLoading]
