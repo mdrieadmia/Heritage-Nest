@@ -21,7 +21,7 @@ const PropertyDetails = () => {
     const { data: property = {}, isLoading } = useQuery({
         queryKey: ['property'],
         queryFn: async () => {
-            const data = axios.get(`http://localhost:5000/details/${id}`)
+            const data = axios.get(`https://heritagenest-tau.vercel.app/details/${id}`)
 
             return data;
         }
@@ -44,13 +44,14 @@ const PropertyDetails = () => {
             userName: userData.displayName,
             propertiesId: _id,
             propertiesName: name,
+            location:location,
             price: price,
             minPrice: minPrice * 5,
             maxPrice: maxPrice * 5,
             image: primaryImage,
         }
         try {
-            const data = await axios.post('http://localhost:5000/bid', bidData)
+            const data = await axios.post('https://heritagenest-tau.vercel.app/bid', bidData)
 
             if (data.data.insertedId) {
                 toast.success('Bid Placed Successfully')

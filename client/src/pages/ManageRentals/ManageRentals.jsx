@@ -12,7 +12,7 @@ const ManageRentals = () => {
     const {data:bids=[], isLoading:isBidLoading, refetch} = useQuery({
         queryKey:['bids'],
         queryFn: async()=>{
-            const data = await axios.get(`http://localhost:5000/bids/${userData.email}`)
+            const data = await axios.get(`https://heritagenest-tau.vercel.app/bids/${userData.email}`)
             return data.data;
         }
     })

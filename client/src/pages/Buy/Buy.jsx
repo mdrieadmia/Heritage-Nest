@@ -11,7 +11,7 @@ import Testimonials from "../../components/Testimonials/Testimonials";
 
 const Buy = () => {
     const [category, setCategory] = useState('buy')
-    const { register, handleSubmit, formState: { errors } } = useForm()
+    const { register, formState: { errors } } = useForm()
 
     return (
         <div>
@@ -35,7 +35,7 @@ const Buy = () => {
                             </ul>
                             <div className="w-full h-[3px] bg-blue-50 -mt-[2px]"></div>
                         </div>
-                        <form onSubmit={handleSubmit(handleSearch)} className="mt-8 relative">
+                        <form className="mt-8 relative">
                             <div className="absolute text-2xl top-[14px] left-4 text-[#6B7280]">
                                 <IoSearch />
                             </div>

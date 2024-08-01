@@ -17,7 +17,7 @@ const ManageRentalsTable = ({ data, refetch }) => {
             confirmButtonText: "Yes, delete it!"
         }).then(async(result) => {
             if (result.isConfirmed) {
-                const data = await axios.delete(`http://localhost:5000/bid/${id}`)
+                const data = await axios.delete(`https://heritagenest-tau.vercel.app/bid/${id}`)
                 if(data.data.deletedCount > 0){
                     refetch()
                     Swal.fire({
