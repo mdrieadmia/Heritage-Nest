@@ -27,7 +27,7 @@ const Routes = createBrowserRouter([
                 element : <Buy/>
             },
             {
-                path:'/details',
+                path:'/details/:id',
                 element : <PropertyDetails/>
             },
             {

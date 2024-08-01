@@ -28,7 +28,7 @@ const Signin = () => {
     }
 
     // Google Login Handeler
-    const handleGoogleLogin = async () => {
+    const handleGoogleLogin = async() => {
         try {
             await googleLogin()
             toast.success('Logged in successfully.')
