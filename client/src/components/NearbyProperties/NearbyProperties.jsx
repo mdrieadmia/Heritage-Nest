@@ -3,19 +3,17 @@ import 'swiper/css/pagination';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
-import { Autoplay, Pagination } from 'swiper/modules';
+import { Autoplay } from 'swiper/modules';
 import { BsImage } from "react-icons/bs";
 import { GrLocation } from "react-icons/gr";
 
 
-
-const PopularProperties = () => {
+const NearbyProperties = () => {
     return (
         <div className="container mx-auto px-5 mt-10">
             <div className="flex justify-between items-center flex-wrap gap-5">
-                <h1 className="font-semibold text-[#111827] text-2xl lg:text-[32px] text-nowrap">Popular Properties</h1>
+                <h1 className="font-semibold text-[#111827] text-2xl lg:text-[32px] text-wrap">Others Nearby Properties</h1>
                 <p className="cursor-pointer font-semibold font-poppins underline text-[#0059b1] text-[18px] text-nowrap">See all property</p>
-                <p></p>
             </div>
             <div className='mt-8'>
                 <Swiper
@@ -42,14 +40,11 @@ const PopularProperties = () => {
                             spaceBetween: 50,
                         },
                     }}
-                    pagination={{
-                        clickable: true,
-                    }}
-                    modules={[Autoplay, Pagination, Navigation]}
+                    modules={[Autoplay, Navigation]}
                     className="mySwiper"
                 >
                     <SwiperSlide>
-                        <div className='w-full rounded-lg border mb-10'>
+                        <div className='w-full rounded-lg border'>
                             <div className='w-full relative'>
                                 <img className='w-full h-[200px] rounded-t-md object-cover' src="/about3.png" alt="" />
                                 <div className='px-2 py-1 text-lg absolute bottom-4 left-4 bg-white rounded-md flex justify-center gap-2 items-center'>
@@ -80,7 +75,7 @@ const PopularProperties = () => {
                         </div>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <div className='w-full rounded-lg border mb-10'>
+                        <div className='w-full rounded-lg border'>
                             <div className='w-full relative'>
                                 <img className='w-full h-[200px] rounded-t-md object-cover' src="/about3.png" alt="" />
                                 <div className='px-2 py-1 text-lg absolute bottom-4 left-4 bg-white rounded-md flex justify-center gap-2 items-center'>
@@ -111,7 +106,7 @@ const PopularProperties = () => {
                         </div>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <div className='w-full rounded-lg border mb-10'>
+                        <div className='w-full rounded-lg border'>
                             <div className='w-full relative'>
                                 <img className='w-full h-[200px] rounded-t-md object-cover' src="/about3.png" alt="" />
                                 <div className='px-2 py-1 text-lg absolute bottom-4 left-4 bg-white rounded-md flex justify-center gap-2 items-center'>
@@ -142,7 +137,7 @@ const PopularProperties = () => {
                         </div>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <div className='w-full rounded-lg border mb-10'>
+                        <div className='w-full rounded-lg border'>
                             <div className='w-full relative'>
                                 <img className='w-full h-[200px] rounded-t-md object-cover' src="/about3.png" alt="" />
                                 <div className='px-2 py-1 text-lg absolute bottom-4 left-4 bg-white rounded-md flex justify-center gap-2 items-center'>
@@ -172,11 +167,12 @@ const PopularProperties = () => {
                             </div>
                         </div>
                     </SwiperSlide>
-                    
+
                 </Swiper>
             </div>
+            <hr className='border my-16' />
         </div>
     );
 };
 
-export default PopularProperties;
+export default NearbyProperties;

@@ -58,3 +58,51 @@ body {
 .inner-shadow {
     box-shadow: inset 0px 20px 30px -10px rgba(0, 0, 0, 0.158);
 }
+
+.amenities_item:hover .amenities_icon {
+    transition: 0.2s all linear;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+}
+
+.amenities_item:hover .amenities_text {
+    transition: 0.2s all linear;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.range-slider1,
+.range-slider2 {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 24px;
+    background: #EEEEEE;
+    outline: none;
+    transition: opacity 0.15s ease-in-out;
+}
+
+.range-slider1 {
+    border-radius: 20px 0px 0px 20px;
+}
+
+.range-slider2 {
+    border-radius: 0px 20px 20px 0px;
+}
+
+.range-slider1::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    background: #EE6611;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.range-slider2::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    background: #EE6611;
+    cursor: pointer;
+    border-radius: 50%;
+}

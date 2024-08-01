@@ -1,7 +1,7 @@
 
 const Consultation = () => {
     return (
-        <div className="my-[64px] flex justify-between">
+        <div className="my-[64px] flex justify-between flex-col md:flex-row gap-5">
             <div>
                 <div className="flex gap-2 items-center">
                     <div className="h-[4px] w-16 bg-[#F06711]"></div>
@@ -14,7 +14,7 @@ const Consultation = () => {
                 </div>
             </div>
             <div>
-                <img className="w-[384px] h-[304px] object-cover" src="/about3.avif" alt="About Image" />
+                <img className="w-full md:w-[384px] h-[304px] object-cover" src="/about3.png" alt="About Image" />
             </div>
         </div>
     );

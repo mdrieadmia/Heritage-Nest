@@ -1,14 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
     Navbar,
     MobileNav,
     Typography,
     IconButton,
 } from "@material-tailwind/react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../authentication/AuthProvider";
 
 const Menubar = () => {
-
+    const { user, userData, loading, handleLogOut } = useContext(AuthContext)
     const [openNav, setOpenNav] = React.useState(false);
 
     React.useEffect(() => {
@@ -17,6 +18,8 @@ const Menubar = () => {
             () => window.innerWidth >= 960 && setOpenNav(false),
         );
     }, []);
+
+    console.log(userData);
     const navList = (
         <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
             <Typography
@@ -82,7 +85,6 @@ const Menubar = () => {
 
         </ul>
     );
-
 
     return (
         <div>
@@ -152,21 +154,50 @@ const Menubar = () => {
                                 </IconButton>
                             </div>
                             <div className="items-center gap-x-1 hidden lg:flex">
-                                <button
-                                    className="hidden lg:inline-block text-[#0059B1] px-[25px] rounded-[8px] py-[10px] bg-[#C5E2FF]"
-                                >
-                                    Sign In
-                                </button>
+                                {
+                                    user ?
+                                        <div className="flex justify-center items-center gap-3">
+                                            <img className="h-10 w-10 rounded-full p-1 border-2 object-cover border-blue-300" src={userData !== null ? userData.photoURL : 'https://static.vecteezy.com/system/resources/thumbnails/008/442/086/small_2x/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg'} alt="User" />
+                                            <button
+                                                className="lg:inline-block hidden text-[#0059B1] px-[25px] rounded-[8px] py-[10px] bg-[#C5E2FF]"
+                                                onClick={() => handleLogOut()}
+                                            >
+                                                Sign Out
+                                            </button>
+                                        </div>
+                                        :
+                                        <Link to={'/signin'}>
+                                            <button
+                                                className="lg:inline-block hidden text-[#0059B1] px-[25px] rounded-[8px] py-[10px] bg-[#C5E2FF] hover:bg-blue-200 duration-200"
+                                            >
+                                                Sign In
+                                            </button>
+                                        </Link>
+                                }
                             </div>
                         </div>
                         <MobileNav className="-mt-3" open={openNav}>
                             <div className="bg-[#ECF5FF] z-[100] w-full px-5">
                                 {navList}
-                                <button
-                                    className="inline-block lg:hidden mb-5 text-[#0059B1] px-[25px] rounded-[8px] py-[10px] bg-[#C5E2FF]"
-                                >
-                                    Sign In
-                                </button>
+                                {
+                                    !loading && user ?
+                                        <div className="flex gap-5 flex-col mb-5">
+                                            <img className="h-10 w-10 rounded-full p-1 border-2 object-cover border-blue-300" src={userData.photoURL !== null ? userData.photoURL : "https://static.vecteezy.com/system/resources/thumbnails/008/442/086/small_2x/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg"} alt="User" />
+                                            <button
+                                                className="inline-block lg:hidden mb-5 text-[#0059B1] px-[25px] rounded-[8px] py-[10px] bg-[#C5E2FF]"
+                                            >
+                                                Sign Out
+                                            </button>
+                                        </div>
+                                        :
+                                        <Link to={'/signin'}>
+                                            <button
+                                                className="inline-block lg:hidden mb-5 text-[#0059B1] px-[25px] rounded-[8px] py-[10px] bg-[#C5E2FF] hover:bg-blue-200 duration-200"
+                                            >
+                                                Sign In
+                                            </button>
+                                        </Link>
+                                }
                             </div>
                         </MobileNav>
                     </div>

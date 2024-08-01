@@ -5,6 +5,8 @@ import Home from "../pages/Home/Home";
 import About from "../pages/About/About";
 import Buy from "../pages/Buy/Buy";
 import PropertyDetails from "../pages/PropertyDetails/PropertyDetails";
+import Signin from "../pages/Signin/Signin";
+import Signup from "../pages/SignUp/Signup";
 
 const Routes = createBrowserRouter([
     {
@@ -27,6 +29,14 @@ const Routes = createBrowserRouter([
             {
                 path:'/details',
                 element : <PropertyDetails/>
+            },
+            {
+                path:'/signin',
+                element : <Signin/>
+            },
+            {
+                path:'/register',
+                element : <Signup />
             }
         ]
     }

@@ -48,7 +48,7 @@ const NewListed = () => {
                     <SwiperSlide>
                         <div className='w-full rounded-lg border mb-10'>
                             <div className='w-full relative'>
-                                <img className='w-full h-[200px] rounded-t-md object-cover' src="/about3.avif" alt="" />
+                                <img className='w-full h-[200px] rounded-t-md object-cover' src="/about3.png" alt="" />
                                 <div className='px-2 py-1 text-lg absolute bottom-4 left-4 bg-white rounded-md flex justify-center gap-2 items-center'>
                                     <BsImage className='text-[#EE6611]' />
                                     <p className='font-semibold text-black'>20</p>
@@ -79,7 +79,7 @@ const NewListed = () => {
                     <SwiperSlide>
                         <div className='w-full rounded-lg border mb-10'>
                             <div className='w-full relative'>
-                                <img className='w-full h-[200px] rounded-t-md object-cover' src="/about3.avif" alt="" />
+                                <img className='w-full h-[200px] rounded-t-md object-cover' src="/about3.png" alt="" />
                                 <div className='px-2 py-1 text-lg absolute bottom-4 left-4 bg-white rounded-md flex justify-center gap-2 items-center'>
                                     <BsImage className='text-[#EE6611]' />
                                     <p className='font-semibold text-black'>20</p>
@@ -110,7 +110,7 @@ const NewListed = () => {
                     <SwiperSlide>
                         <div className='w-full rounded-lg border mb-10'>
                             <div className='w-full relative'>
-                                <img className='w-full h-[200px] rounded-t-md object-cover' src="/about3.avif" alt="" />
+                                <img className='w-full h-[200px] rounded-t-md object-cover' src="/about3.png" alt="" />
                                 <div className='px-2 py-1 text-lg absolute bottom-4 left-4 bg-white rounded-md flex justify-center gap-2 items-center'>
                                     <BsImage className='text-[#EE6611]' />
                                     <p className='font-semibold text-black'>20</p>
@@ -141,7 +141,7 @@ const NewListed = () => {
                     <SwiperSlide>
                         <div className='w-full rounded-lg border mb-10'>
                             <div className='w-full relative'>
-                                <img className='w-full h-[200px] rounded-t-md object-cover' src="/about3.avif" alt="" />
+                                <img className='w-full h-[200px] rounded-t-md object-cover' src="/about3.png" alt="" />
                                 <div className='px-2 py-1 text-lg absolute bottom-4 left-4 bg-white rounded-md flex justify-center gap-2 items-center'>
                                     <BsImage className='text-[#EE6611]' />
                                     <p className='font-semibold text-black'>20</p>
