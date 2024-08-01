@@ -3,29 +3,29 @@ import { Link, useNavigate } from "react-router-dom";
 import toast from 'react-hot-toast';
 import { useContext } from "react";
 import { AuthContext } from "../../authentication/AuthProvider";
+import imageUpload from "../../Utility/Utility";
 
 const Signup = () => {
-    const { handleRegister, setUser, setLoading, handleUpdateUserData } = useContext(AuthContext);
+    const { createUser, setLoading, updateUserProfile } = useContext(AuthContext);
     const { register, handleSubmit, formState: { errors } } = useForm()
     const navigate = useNavigate();
 
 
-    const handleEmailRegister = (data) => {
-        const { name, photo, email, password } = data;
-
-        handleRegister(email, password)
-            .then((res) => {
-                toast.success('Registerd succesfully')
-                setUser({ ...res?.user, photoURL: photo, displayName: name })
-                handleUpdateUserData(name, photo)
-                    .then(() => { })
-                    .catch(() => { })
-                navigate('/')
-            })
-            .catch(() => {
-                toast.error("Register Failed")
-                setLoading(false)
-            })
+    const handleEmailRegister = async (data) => {
+        setLoading(true)
+        const { email, name, password, photo } = data || {}
+        try {
+            const photo_url = await imageUpload(photo[0])
+            console.log(photo_url);
+            await createUser(email, password)
+            await updateUserProfile(name, photo_url)
+            toast.success("Signup Successfull")
+            setLoading(false)
+            navigate('/')
+        } catch (err) {
+            toast.error("Signup Failed")
+            setLoading(false)
+        }
     }
     return (
         <div className="">
@@ -37,7 +37,7 @@ const Signup = () => {
                             <input className="block w-full my-3 px-5 py-2 border rounded-md border-gray-200" type="text" placeholder="Full Name" name="name" {...register("name", { required: true })} />
                             {errors.name && <span className="text-red-500">This field is required</span>}
 
-                            <input className="block w-full my-3 px-5 py-2 border rounded-md border-gray-200" type="text" placeholder="Photo URL" name="photo" {...register("photo", { required: true })} />
+                            <input className="block w-full my-3 px-5 py-2 border rounded-md border-gray-200" type="file" placeholder="Photo" name="photo"{...register("photo", { required: true })} />
                             {errors.photo && <span className="text-red-500">This field is required</span>}
 
                             <input className="block w-full my-3 px-5 py-2 border rounded-md border-gray-200" type="email" placeholder="Email" name="email" {...register("email", { required: true })} />

@@ -106,3 +106,8 @@ body {
     cursor: pointer;
     border-radius: 50%;
 }
+
+.active{
+    color: #5490CB;
+    border-bottom: #5490CB;
+}

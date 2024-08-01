@@ -1,50 +1,43 @@
 import { createContext, useEffect, useState } from "react";
-import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from 'firebase/auth';
 import app from '../firebase/firebase.config';
 import PropTypes from 'prop-types';
 
 export const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
+
     const auth = getAuth(app)
 
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
-
-    // Social login Provider
-    const googleProvider = new GoogleAuthProvider();
-
-
-    // Handle Google Login
-    const googleLogin = () => {
-        return signInWithPopup(auth, googleProvider)
-    }
 
     // Handle Sign Out
     const handleLogOut = async () => {
         return signOut(auth)
     }
 
-    // Handle Register With Email And Password
-    const handleRegister = (email, pass) => {
-        return createUserWithEmailAndPassword(auth, email, pass)
-    }
+   // Register a new user
+  const createUser = (email, password) => {
+    setLoading(true)
+    return createUserWithEmailAndPassword(auth, email, password)
+  }
 
     // Login With Email And Password
     const handleLogin = (email, pass) => {
         return signInWithEmailAndPassword(auth, email, pass)
     }
 
-    // Handle update user data
-    const handleUpdateUserData = (name, photo) => {
+    // Get User
+    const userData = auth.currentUser;
+
+    // Update user data
+    const updateUserProfile = (name, photo) => {
         return updateProfile(auth.currentUser, {
             displayName: name,
             photoURL: photo,
         })
     }
-
-    // Get User
-    const userData = auth.currentUser;
 
     // User Observer
     useEffect(() => {
@@ -64,10 +57,9 @@ const AuthProvider = ({ children }) => {
         userData,
         setLoading,
         handleLogin,
-        googleLogin,
         handleLogOut,
-        handleRegister,
-        handleUpdateUserData
+        createUser,
+        updateUserProfile,
     }
 
 

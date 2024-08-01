@@ -4,7 +4,7 @@ import Amenities from "../../components/Amenities/Amenities";
 import Services from "../../components/Services/Services";
 import NearbyProperties from "../../components/NearbyProperties/NearbyProperties";
 import { useContext, useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { TbFidgetSpinner } from "react-icons/tb";
@@ -16,13 +16,12 @@ const PropertyDetails = () => {
     const [maxPrice, setMaxPrice] = useState(80);
     const [bidLoading, setBidLoading] = useState(false)
     const { id } = useParams()
-    const { user, userData } = useContext(AuthContext)
+    const { userData } = useContext(AuthContext)
 
     const { data: property = {}, isLoading } = useQuery({
         queryKey: ['property'],
         queryFn: async () => {
             const data = axios.get(`https://heritagenest-tau.vercel.app/details/${id}`)
-
             return data;
         }
     })
@@ -39,12 +38,19 @@ const PropertyDetails = () => {
 
     const handlePlaceBid = async () => {
         setBidLoading(true)
+
+        if (userData === null) {
+            toast.error('Not Logged In, Login Now')
+            setBidLoading(false)
+            return;
+        }
+
         const bidData = {
             userEmail: userData.email,
             userName: userData.displayName,
             propertiesId: _id,
             propertiesName: name,
-            location:location,
+            location: location,
             price: price,
             minPrice: minPrice * 5,
             maxPrice: maxPrice * 5,
@@ -63,21 +69,22 @@ const PropertyDetails = () => {
         }
     }
 
-    if (!user) {
-        return <div className="flex flex-col items-center justify-center h-[500px] w-full">
-            <h1 className="text-3xl text-center font-semibold text-red-500">You are not logged in</h1>
-            <p className="text-lg font-semibold text-center mt-2">Please Signin first</p>
-            <div className="flex justify-center items-center mt-5">
-                <Link to={'/signin'} className="px-5 py-2 bg-blue-300 text-white rounded-md hover:bg-blue-500 duration-200">
-                    Sign In
-                </Link>
-            </div>
-        </div>
-    }
+    // if (!user) {
+    //     return <div className="flex flex-col items-center justify-center h-[500px] w-full">
+    //         <h1 className="text-3xl text-center font-semibold text-red-500">You are not logged in</h1>
+    //         <p className="text-lg font-semibold text-center mt-2">Please Signin first</p>
+    //         <div className="flex justify-center items-center mt-5">
+    //             <Link to={'/signin'} className="px-5 py-2 bg-blue-300 text-white rounded-md hover:bg-blue-500 duration-200">
+    //                 Sign In
+    //             </Link>
+    //         </div>
+    //     </div>
+    // }
 
     if (isLoading) {
-        return <div className="h-screen w-full flex justify-center items-center">
-            <TbFidgetSpinner className="animate-spin text-3xl text-orange-600" />
+        return <div className="h-[600px] w-full flex justify-center items-center">
+            <TbFidgetSpinner className="animate-spin mr-3 mb-1 text-4xl text-orange-600" />
+            <p>Please wait some moment...</p>
         </div>
     }
 

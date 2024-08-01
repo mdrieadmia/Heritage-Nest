@@ -1,24 +1,23 @@
 import { useContext } from "react";
 import { AuthContext } from "../../authentication/AuthProvider";
 import { Link } from "react-router-dom";
-import { TbFidgetSpinner } from "react-icons/tb";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import ManageRentalsTable from "../../components/ManageRentalsTable/ManageRentalsTable";
+import { TbFidgetSpinner } from "react-icons/tb";
 
 const ManageRentals = () => {
-    const { user, userData, isLoading } = useContext(AuthContext)
+    const { userData } = useContext(AuthContext)
 
-    const {data:bids=[], isLoading:isBidLoading, refetch} = useQuery({
-        queryKey:['bids'],
-        queryFn: async()=>{
+    const { data: bids = [], isLoading, refetch } = useQuery({
+        queryKey: ['bids'],
+        queryFn: async () => {
             const data = await axios.get(`https://heritagenest-tau.vercel.app/bids/${userData.email}`)
             return data.data;
         }
     })
 
-
-    if (!user) {
+    if (!userData) {
         return <div className="flex flex-col items-center justify-center h-[500px] w-full">
             <h1 className="text-3xl text-center font-semibold text-red-500">You are not logged in</h1>
             <p className="text-lg font-semibold text-center mt-2">Please Signin first</p>
@@ -30,9 +29,10 @@ const ManageRentals = () => {
         </div>
     }
 
-    if (isLoading || isBidLoading) {
-        return <div className="h-screen w-full flex justify-center items-center">
-            <TbFidgetSpinner className="animate-spin text-3xl text-orange-600" />
+    if (isLoading) {
+        return <div className="h-[600px] w-full flex justify-center items-center">
+            <TbFidgetSpinner className="animate-spin mr-3 mb-1 text-4xl text-orange-600" />
+            <p>Please wait some moment...</p>
         </div>
     }
 
@@ -45,16 +45,16 @@ const ManageRentals = () => {
             </h1>
             <p className="text-xl font-bold text-center mt-5">Your Previous Bid List</p>
             <div>
-                <ManageRentalsTable data={bids} refetch={refetch}/>
+                <ManageRentalsTable data={bids} refetch={refetch} />
             </div>
             <div>
                 {
                     bids.length < 1 && <div>
                         <h4 className="text-center">Please place your bid first</h4>
                         <div className="flex justify-center items-center mt-5">
-                            <Link to={'/buy'} className="px-8 py-2 bg-blue-400 hover:bg-blue-600 text-white rounded-lg duration-100"> See Properties</Link>
+                            <Link to={'/buy'} className="px-8 py-2 bg-blue-400 hover:bg-blue-600 text-white rounded-lg duration-100"> Place Bid</Link>
                         </div>
-                    </div> 
+                    </div>
                 }
             </div>
         </div>

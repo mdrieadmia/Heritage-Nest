@@ -9,11 +9,12 @@ const Root = () => {
     const { loading } = useContext(AuthContext)
 
     if (loading) {
-        return <div className="h-screen w-full flex justify-center items-center">
-            <TbFidgetSpinner className="animate-spin text-3xl text-orange-600" />
+        return <div className="h-[600px] w-full flex justify-center items-center">
+            <TbFidgetSpinner className="animate-spin mr-3 mb-1 text-4xl text-orange-600" />
+            <p>Please wait some moment...</p>
         </div>
     }
-    
+
     return (
         <div>
             <div>

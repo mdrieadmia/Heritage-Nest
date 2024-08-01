@@ -8,6 +8,7 @@ import PropertyDetails from "../pages/PropertyDetails/PropertyDetails";
 import Signin from "../pages/Signin/Signin";
 import Signup from "../pages/SignUp/Signup";
 import ManageRentals from "../pages/ManageRentals/ManageRentals";
+import AllProperties from "../pages/AllProperties/AllProperties";
 
 const Routes = createBrowserRouter([
     {
@@ -42,6 +43,10 @@ const Routes = createBrowserRouter([
             {
                 path:'/manage',
                 element : <ManageRentals />
+            },
+            {
+                path:'/all',
+                element : <AllProperties/>
             }
         ]
     }

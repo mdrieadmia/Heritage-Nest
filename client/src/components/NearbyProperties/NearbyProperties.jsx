@@ -16,15 +16,18 @@ const NearbyProperties = () => {
     const [nearbyProperties, isLoading] = useNearbyProperties()
 
     if (isLoading) {
-        return <div className="h-screen w-full flex justify-center items-center">
-            <TbFidgetSpinner className="animate-spin text-3xl text-orange-600" />
+        return <div className="h-[600px] w-full flex justify-center items-center">
+            <TbFidgetSpinner className="animate-spin mr-3 mb-1 text-4xl text-orange-600" />
+            <p>Please wait some moment...</p>
         </div>
     }
     return (
         <div className="container mx-auto px-5 mt-10">
             <div className="flex justify-between items-center flex-wrap gap-5">
                 <h1 className="font-semibold text-[#111827] text-2xl lg:text-[32px] text-wrap">Others Nearby Properties</h1>
-                <p className="cursor-pointer font-semibold font-poppins underline text-[#0059b1] text-[18px] text-nowrap">See all property</p>
+                <Link to={'/all'}>
+                    <p className="cursor-pointer font-semibold font-poppins underline text-[#0059b1] text-[18px] text-nowrap">See all property</p>
+                </Link>
             </div>
             <div className='mt-8'>
                 <Swiper

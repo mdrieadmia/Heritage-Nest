@@ -9,9 +9,14 @@ import PopularProperties from "../../components/PopularProperties/PopularPropert
 import NewListed from "../../components/NewListed/NewListed";
 import Testimonials from "../../components/Testimonials/Testimonials";
 
+
 const Buy = () => {
     const [category, setCategory] = useState('buy')
-    const { register, formState: { errors } } = useForm()
+    const { register, handleSubmit, formState: { errors } } = useForm()
+    
+    const handleSearch =()=>{
+
+    }
 
     return (
         <div>
@@ -35,7 +40,7 @@ const Buy = () => {
                             </ul>
                             <div className="w-full h-[3px] bg-blue-50 -mt-[2px]"></div>
                         </div>
-                        <form className="mt-8 relative">
+                        <form onSubmit={handleSubmit(handleSearch)} className="mt-8 relative">
                             <div className="absolute text-2xl top-[14px] left-4 text-[#6B7280]">
                                 <IoSearch />
                             </div>

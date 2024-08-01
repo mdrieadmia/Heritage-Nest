@@ -19,6 +19,8 @@ const Menubar = () => {
         );
     }, []);
 
+    console.log(userData);
+
     const navList = (
         <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
             <Typography
@@ -63,9 +65,9 @@ const Menubar = () => {
                 color="blue-gray"
                 className="p-1 font-normal"
             >
-                <NavLink to={'/'}>
+                <NavLink to={'/all'}>
                     <p className="flex items-center text-black text-lg mt-2 font-inter hover:text-blue-500 duration-200 cursor-pointer border-b-2 border-transparent hover:border-blue-500 pb-1">
-                        Sell
+                        All Properties
                     </p>
                 </NavLink>
             </Typography>
